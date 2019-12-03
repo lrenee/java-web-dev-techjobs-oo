@@ -51,5 +51,10 @@ public class JobTest {
         assertEquals("Persistence", test_job3.getCoreCompetency().getValue());
     }
 
+    @Test
+    public void testJobsForEquality() {
+        assertNotEquals(test_job4, test_job5);
+    }
+
 
 }
