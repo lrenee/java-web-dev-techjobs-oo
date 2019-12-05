@@ -12,9 +12,13 @@ public class Employer {
         nextId++;
     }
 
-    public Employer(String value) {
+    public Employer(String aValue) {
         this();
-        this.value = value;
+        if (aValue == "") {
+            this.value = "Data not available";
+        } else {
+            this.value = aValue;
+        }
     }
 
     // Custom toString, equals, and hashCode methods:

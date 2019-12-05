@@ -24,11 +24,24 @@ public class Job {
 
     public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
         this();
-        this.name = aName;
+        if (aName == "") {
+            this.name = "Data not available";
+        } else {
+            this.name = aName;
+        }
         this.employer = aEmployer;
         this.location = aLocation;
         this.positionType = aPositionType;
         this.coreCompetency = aCoreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        if (this.name.equals("Data not available") && this.employer.toString().equals("Data not available") && this.location.toString().equals("Data not available") && this.positionType.toString().equals("Data not available") && this.coreCompetency.toString().equals("Data not available")) {
+            return "\nOOPS!  This job does not seem to exist.\n";
+        } else {
+            return "\nID: " + this.id + "\nName: " + this.name + "\nEmployer: " + this.employer + "\nLocation: " + this.location + "\nPosition Type: " + this.positionType + "\nCore Competency: " + this.coreCompetency + "\n";
+        }
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields

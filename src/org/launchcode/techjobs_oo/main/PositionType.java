@@ -12,9 +12,13 @@ public class PositionType {
         nextId++;
     }
 
-    public PositionType(String value) {
+    public PositionType(String aValue) {
         this();
-        this.value = value;
+        if (aValue == "") {
+            this.value = "Data not available";
+        } else {
+            this.value = aValue;
+        }
     }
 
     // TODO: Add a custom toString() method that returns the data stored in 'value'.

@@ -17,7 +17,11 @@ public class Location {
 
     public Location(String aValue) {
         this();
-        this.value = aValue;
+        if (aValue == "") {
+            this.value = "Data not available";
+        } else {
+            this.value = aValue;
+        }
     }
 
 

@@ -12,10 +12,15 @@ public class CoreCompetency {
         nextId++;
     }
 
-    public CoreCompetency(String value) {
+    public CoreCompetency(String aValue) {
         this();
-        this.value = value;
+        if (aValue == "") {
+            this.value = "Data not available";
+        } else {
+            this.value = aValue;
+        }
     }
+
 
     // Custom toString, equals, and hashCode methods:
 
