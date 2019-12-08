@@ -6,6 +6,7 @@ public class Location {
     private int id;
     private static int nextId = 1;
     private String value;
+    private String notAvailable = "Data not available";
 
     public Location() {
         id = nextId;
@@ -17,11 +18,7 @@ public class Location {
 
     public Location(String aValue) {
         this();
-        if (aValue == "") {
-            this.value = "Data not available";
-        } else {
-            this.value = aValue;
-        }
+        this.value = aValue;
     }
 
 
@@ -29,7 +26,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return value;
+        return getValue();
     }
 
     @Override
@@ -52,7 +49,11 @@ public class Location {
     }
 
     public String getValue() {
-        return value;
+        if (value == "") {
+            return notAvailable;
+        } else {
+            return value;
+        }
     }
 
     public void setValue(String value) {

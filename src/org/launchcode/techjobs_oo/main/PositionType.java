@@ -6,6 +6,7 @@ public class PositionType {
     private int id;
     private static int nextId = 1;
     private String value;
+    private String notAvailable = "Data not available";
 
     public PositionType() {
         id = nextId;
@@ -14,18 +15,14 @@ public class PositionType {
 
     public PositionType(String aValue) {
         this();
-        if (aValue == "") {
-            this.value = "Data not available";
-        } else {
-            this.value = aValue;
-        }
+        this.value = aValue;
     }
 
     // TODO: Add a custom toString() method that returns the data stored in 'value'.
 
     @Override
     public String toString() {
-        return value;
+        return getValue();
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
@@ -51,7 +48,11 @@ public class PositionType {
     }
 
     public String getValue() {
-        return value;
+        if (value == "") {
+            return notAvailable;
+        } else {
+            return value;
+        }
     }
 
     public void setValue(String value) {

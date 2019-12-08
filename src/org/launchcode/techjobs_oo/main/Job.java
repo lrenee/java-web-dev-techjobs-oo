@@ -8,6 +8,7 @@ public class Job {
     private static int nextId = 1;
 
     private String name;
+    private String notAvailable = "Data not available";
     private Employer employer;
     private Location location;
     private PositionType positionType;
@@ -24,11 +25,7 @@ public class Job {
 
     public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
         this();
-        if (aName == "") {
-            this.name = "Data not available";
-        } else {
-            this.name = aName;
-        }
+        this.name = aName;
         this.employer = aEmployer;
         this.location = aLocation;
         this.positionType = aPositionType;
@@ -37,10 +34,13 @@ public class Job {
 
     @Override
     public String toString() {
-        if (this.name.equals("Data not available") && this.employer.toString().equals("Data not available") && this.location.toString().equals("Data not available") && this.positionType.toString().equals("Data not available") && this.coreCompetency.toString().equals("Data not available")) {
+        if(this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+            return "\nOOPS!  This job does not seem to exist.\n";
+        } else
+        if (this.getName().equals("Data not available") && this.employer.toString().equals("Data not available") && this.location.toString().equals("Data not available") && this.positionType.toString().equals("Data not available") && this.coreCompetency.toString().equals("Data not available")) {
             return "\nOOPS!  This job does not seem to exist.\n";
         } else {
-            return "\nID: " + this.id + "\nName: " + this.name + "\nEmployer: " + this.employer + "\nLocation: " + this.location + "\nPosition Type: " + this.positionType + "\nCore Competency: " + this.coreCompetency + "\n";
+            return "\nID: " + this.id + "\nName: " + this.getName() + "\nEmployer: " + this.employer + "\nLocation: " + this.location + "\nPosition Type: " + this.positionType + "\nCore Competency: " + this.coreCompetency + "\n";
         }
     }
 
@@ -63,9 +63,12 @@ public class Job {
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
-
     public String getName() {
-        return name;
+        if (name == "") {
+            return notAvailable;
+        } else {
+            return name;
+        }
     }
 
     public void setName(String name) {
@@ -104,8 +107,8 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public int getId() {
+   public int getId() {
         return id;
-    }
+   }
 
 }

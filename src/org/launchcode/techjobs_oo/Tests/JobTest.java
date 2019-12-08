@@ -74,6 +74,8 @@ public class JobTest {
     public void toStringHasBlankLineBeforeAndAfterJobInfo() {
         assertTrue(test_job1.toString().startsWith("\n"));
         assertTrue(test_job1.toString().endsWith("\n"));
+        assertTrue(test_job11.toString().startsWith("\n"));
+        assertTrue(test_job11.toString().endsWith("\n"));
         assertTrue(test_job3.toString().startsWith("\n"));
         assertTrue(test_job3.toString().endsWith("\n"));
     }
@@ -102,11 +104,17 @@ public class JobTest {
         assertEquals(test_job8.getEmployer().getValue(), "Data not available");
         assertEquals(test_job9.getPositionType().getValue(), "Data not available");
         assertEquals(test_job10.getCoreCompetency().getValue(), "Data not available");
+        assertEquals(test_job11.getName(), "Data not available");
+        assertEquals(test_job11.getLocation().getValue(), "Data not available");
+        assertEquals(test_job11.getEmployer().getValue(), "Data not available");
+        assertEquals(test_job11.getPositionType().getValue(), "Data not available");
+        assertEquals(test_job11.getCoreCompetency().getValue(), "Data not available");
     }
 
     @Test
     public void emptyJobReturnsOops() {
-        assertEquals(test_job1.toString(), "OOPS!  This job does not seem to exist.");
+        assertEquals(test_job1.toString(), "\nOOPS!  This job does not seem to exist.\n");
+        assertEquals(test_job11.toString(), "\nOOPS!  This job does not seem to exist.\n");
     }
 
 

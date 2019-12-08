@@ -6,6 +6,7 @@ public class Employer {
     private int id;
     private static int nextId = 1;
     private String value;
+    private static final String notAvailable = "Data not available";
 
     public Employer() {
         id = nextId;
@@ -14,18 +15,14 @@ public class Employer {
 
     public Employer(String aValue) {
         this();
-        if (aValue == "") {
-            this.value = "Data not available";
-        } else {
-            this.value = aValue;
-        }
+        this.value = aValue;
     }
 
     // Custom toString, equals, and hashCode methods:
 
     @Override
     public String toString() {
-        return value;
+        return getValue();
     }
 
     @Override
@@ -43,12 +40,16 @@ public class Employer {
 
     // Getters and Setters:
 
-    public int getId() {
+   public int getId() {
         return id;
     }
 
     public String getValue() {
-        return value;
+        if (this.value.equals("")) {
+           return notAvailable;
+        } else {
+           return value;
+        }
     }
 
     public void setValue(String value) {

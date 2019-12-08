@@ -6,6 +6,7 @@ public class CoreCompetency {
     private int id;
     private static int nextId = 1;
     private String value;
+    private String notAvailable = "Data not available";
 
     public CoreCompetency() {
         this.id = nextId;
@@ -14,11 +15,7 @@ public class CoreCompetency {
 
     public CoreCompetency(String aValue) {
         this();
-        if (aValue == "") {
-            this.value = "Data not available";
-        } else {
-            this.value = aValue;
-        }
+        this.value = aValue;
     }
 
 
@@ -26,7 +23,7 @@ public class CoreCompetency {
 
     @Override
     public String toString() {
-        return value;
+        return getValue();
     }
 
     @Override
@@ -47,7 +44,11 @@ public class CoreCompetency {
 
 
     public String getValue() {
-        return value;
+        if (value == "") {
+            return notAvailable;
+        } else {
+            return value;
+        }
     }
 
     public void setValue(String value) {
